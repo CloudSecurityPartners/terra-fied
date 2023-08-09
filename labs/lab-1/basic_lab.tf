@@ -8,7 +8,7 @@ resource "aws_instance" "test_instance" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "defcon-lab-instance"
+    Name = "defcon-lab-1-instance"
   }
 }
 

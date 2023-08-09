@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  ami           = "ami-06ca3ca175f37dd66"
-  instance_type = "t2.large"
+  ami           = "ami-0b69ea66ff7391e80"
+  instance_type = "t2.micro"
 
 
   associate_public_ip_address = true
@@ -28,7 +28,7 @@ resource "aws_instance" "example" {
 
   key_name = aws_key_pair.this.key_name
 
-  vpc_security_group_ids = [aws_security_group.example.id]
+  vpc_security_group_ids = [aws_security_group.example.idyes]
 
   metadata_options {
     http_endpoint               = "enabled"
@@ -37,7 +37,7 @@ resource "aws_instance" "example" {
   }
 
   tags = {
-    Name = "terraform-testing"
+    Name = "defcon-lab-4-instance"
   }
 }
 

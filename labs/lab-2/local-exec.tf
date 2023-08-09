@@ -19,6 +19,6 @@ resource "aws_instance" "example" {
   }
 
   tags = {
-    Name = "terraform-instance"
+    Name = "defcon-lab-2-instance"
   }
 }

